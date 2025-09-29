@@ -43,12 +43,13 @@ app.get("/campgrounds",async(req,res)=>
 
     res.render("campgrounds/index",{campgrounds})
 })
-// app.get("/makeCampGround",async (rep,res)=>
-// {
-//    const camp = new CampGround({title:'yard',description:"bayside area"});
-//    await camp.save();
-//    res.send(camp)
-// })
+
+app.get("/show/:id",async(req,res)=>
+{
+    const {id} = req.params;
+    const ID = await CampGround.findById({id})
+    res.redirect("campgrounds/show",{ID})
+})
 
 app.listen(3000,()=>{
     console.log("listeing port 3000")
