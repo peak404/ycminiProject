@@ -34,7 +34,7 @@ const seedDB = async()=>
 {
     await CampGround.deleteMany({});
     // const c = new CampGround({title:"长乐"})
-    for (let i =0;i<50;i++)
+    for (let i =0;i<1000;i++)
     {
         const random1000 =Math.floor(Math.random()*cities.length); 
         const camp = new CampGround({
