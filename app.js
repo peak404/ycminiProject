@@ -35,12 +35,20 @@ app.get("/",(rep,res)=>
    
     res.render('home')
 })
-app.get("/makeCampGround",async (rep,res)=>
+
+
+app.get("/campgrounds",async(req,res)=>
 {
-   const camp = new CampGround({title:'yard',description:"bayside area"});
-   await camp.save();
-   res.send(camp)
+    const campgrounds = await CampGround.find({});
+
+    res.render("campgrounds/index",{campgrounds})
 })
+// app.get("/makeCampGround",async (rep,res)=>
+// {
+//    const camp = new CampGround({title:'yard',description:"bayside area"});
+//    await camp.save();
+//    res.send(camp)
+// })
 
 app.listen(3000,()=>{
     console.log("listeing port 3000")

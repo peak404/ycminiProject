@@ -1,10 +1,11 @@
-//use this to see the database
+//use this to see the database  
+//this is a base seeds  setup
 
 
-const mongoose =require('mongoose')
-const CampGround = require("../models/campground");
-const {places,descriptors} = require('./seedHelpers')
-const cities = require('./cities')
+const mongoose =require('mongoose') //need this for mongoose
+const CampGround = require("../models/campground");   //using this because it has schema model
+const {places,descriptors} = require('./seedHelpers')  //import data from seedHelpers array Base
+const cities = require('./cities')   //import cities data form cities
 
 
 async function main() {
@@ -19,7 +20,7 @@ main().catch(err => console.log("something went wrong",err) );
 
 
 // const sample1 =array=>array[Math.floor(Math.random()*array.length)]
-const sample =function(array)
+const sample =function(array)  //random pick for seedHelper
 {
     if(!Array.isArray(array) || array.length=== 0)
     {
@@ -44,4 +45,8 @@ const seedDB = async()=>
     }
     
 }
-seedDB();
+seedDB().then(()=>
+{
+    console.log("close now")
+    mongoose.connection.close();
+})
