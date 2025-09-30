@@ -50,7 +50,7 @@ app.get("/campgrounds/:id",async(req,res)=>
     res.render("campgrounds/show",{campground})
    
 })
-app.post("/campgrounds",async(req,res)=>
+app.post("/campgrounds",async(req,res)=>  //add
 {
     const newCampground = new CampGround(req.body.campground)
     await newCampground.save()
@@ -58,13 +58,13 @@ app.post("/campgrounds",async(req,res)=>
     
 })
 
-app.get("/campgrounds/:id/edit", async(req,res)=>
+app.get("/campgrounds/:id/edit", async(req,res)=> //edit page
 {
     const campground = await CampGround.findById(req.params.id);
     res.render("campgrounds/edit",{campground})
 
 })
-app.put("/campgrounds/:id",async(req,res)=>
+app.put("/campgrounds/:id",async(req,res)=>      //edit 
 {
    
     const {id} = req.params; 
@@ -72,7 +72,7 @@ app.put("/campgrounds/:id",async(req,res)=>
     res.redirect(`/campgrounds/${campground._id}`)
 })
 
-app.delete("/campgrounds/:id",async(req,res)=>
+app.delete("/campgrounds/:id",async(req,res)=>   //delete
 {
     const {id} =req.params;
     await CampGround.findByIdAndDelete(id);
